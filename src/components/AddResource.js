@@ -1,8 +1,6 @@
-
-
 import { useState, useEffect } from "react";
 
-// Initial blank form state
+
 const emptyForm = {
   title: "",
   type: "PDF",
@@ -15,7 +13,7 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
   const [form, setForm] = useState(emptyForm);
   const isEditing = !!editingResource;
 
-  // If editing, pre-fill the form with the existing resource data
+
   useEffect(() => {
     if (editingResource) {
       setForm({
@@ -30,24 +28,23 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
     }
   }, [editingResource]);
 
-  // Update form fields on change
   function handleChange(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   }
 
-  // Submit the form
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Basic validation
+  
     if (!form.title.trim() || !form.description.trim()) {
       alert("Please fill in all fields.");
       return;
     }
 
     if (isEditing) {
-      // Pass updated data along with original ID and metadata
+    
       onUpdate({
         ...editingResource,
         ...form,
@@ -61,12 +58,13 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
     <div className="form-overlay">
       <div className="form-card">
         <div className="form-header">
-          <h2>{isEditing ? "✏️ Edit Resource" : "➕ Add New Resource"}</h2>
+          <h2>{isEditing ? "Edit Resource" : " Add New Resource"}</h2>
           <button className="close-btn" onClick={onCancel}>✕</button>
         </div>
 
         <form onSubmit={handleSubmit} className="resource-form">
-          {/* Title */}
+       
+
           <div className="form-group">
             <label htmlFor="title">Resource Title *</label>
             <input
@@ -80,13 +78,13 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
             />
           </div>
 
-          {/* Type and Semester - side by side */}
+          
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="type">Type *</label>
               <select id="type" name="type" value={form.type} onChange={handleChange}>
-                <option value="PDF">📄 PDF</option>
-                <option value="Physical">🧰 Physical Item</option>
+                <option value="PDF"> PDF</option>
+                <option value="Physical"> Physical Item</option>
               </select>
             </div>
 
@@ -111,7 +109,7 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
             </div>
           </div>
 
-          {/* Description */}
+         
           <div className="form-group">
             <label htmlFor="description">Description *</label>
             <textarea
@@ -125,13 +123,13 @@ export default function AddResource({ onAdd, onUpdate, onCancel, editingResource
             />
           </div>
 
-          {/* Buttons */}
+          
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={onCancel}>
               Cancel
             </button>
             <button type="submit" className="btn-submit">
-              {isEditing ? "💾 Save Changes" : "✅ Add Resource"}
+              {isEditing ? " Save Changes" : " Add Resource"}
             </button>
           </div>
         </form>

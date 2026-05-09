@@ -4,7 +4,6 @@ import ResourceList from "./components/ResourceList";
 import AddResource from "./components/AddResource";
 import "./App.css";
 
-// Sample initial data so the app looks good on first load
 const initialResources = [
   {
     id: 1,
@@ -69,7 +68,7 @@ export default function App() {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
 
-  // Add a new resource
+
   function handleAdd(newResource) {
     const resourceWithId = {
       ...newResource,
@@ -81,7 +80,7 @@ export default function App() {
     setShowForm(false);
   }
 
-  // Update an existing resource
+ 
   function handleUpdate(updatedResource) {
     setResources(
       resources.map((r) => (r.id === updatedResource.id ? updatedResource : r))
@@ -90,7 +89,7 @@ export default function App() {
     setShowForm(false);
   }
 
-  // Delete a resource
+
   function handleDelete(id) {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       setResources(resources.filter((r) => r.id !== id));
@@ -98,7 +97,7 @@ export default function App() {
     }
   }
 
-  // Toggle watchlist
+
   function handleWatchlist(id) {
     if (watchlist.includes(id)) {
       setWatchlist(watchlist.filter((wId) => wId !== id));
@@ -107,19 +106,19 @@ export default function App() {
     }
   }
 
-  // Open edit form
+
   function handleEdit(resource) {
     setEditingResource(resource);
     setShowForm(true);
   }
 
-  // Cancel form
+  
   function handleCancel() {
     setShowForm(false);
     setEditingResource(null);
   }
 
-  // Filter resources based on search and filters
+ 
   const displayedResources = resources.filter((r) => {
     const matchesTab = activeTab === "all" || watchlist.includes(r.id);
     const matchesSearch = r.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -139,7 +138,7 @@ export default function App() {
       />
 
       <main className="main-content">
-        {/* Hero / Top Bar */}
+      
         <div className="top-bar">
           <div className="top-bar-text">
             <h1 className="page-title">
@@ -156,7 +155,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* Search and Filters */}
         <div className="filters-bar">
           <input
             type="text"
@@ -186,7 +184,6 @@ export default function App() {
           </select>
         </div>
 
-        {/* Add / Edit Form */}
         {showForm && (
           <AddResource
             onAdd={handleAdd}
@@ -196,7 +193,7 @@ export default function App() {
           />
         )}
 
-        {/* Resource Cards */}
+  
         <ResourceList
           resources={displayedResources}
           watchlist={watchlist}
@@ -205,7 +202,7 @@ export default function App() {
           onWatchlist={handleWatchlist}
         />
 
-        {/* Empty State */}
+  
         {displayedResources.length === 0 && (
           <div className="empty-state">
             <div className="empty-icon">📭</div>

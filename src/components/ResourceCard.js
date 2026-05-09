@@ -3,10 +3,9 @@
 export default function ResourceCard({ resource, isWatchlisted, onDelete, onEdit, onWatchlist }) {
   const { id, title, type, semester, category, description, uploadedBy, date } = resource;
 
-  // Choose icon based on type
-  const typeIcon = type === "PDF" ? "📄" : "🧰";
 
-  // Choose color badge class based on category
+  const typeIcon = type === "PDF" ? "" : "🧰";
+
   const categoryColors = {
     Notes: "badge-blue",
     Books: "badge-green",
@@ -39,11 +38,11 @@ export default function ResourceCard({ resource, isWatchlisted, onDelete, onEdit
         <span className="badge badge-semester">Sem {semester}</span>
         <span className="badge badge-type">{type}</span>
       </div>
-
-      {/* Description */}
+    
+      
       <p className="card-description">{description}</p>
 
-      {/* Footer */}
+
       <div className="card-footer">
         <div className="uploader-info">
           <span className="uploader-avatar">{uploadedBy[0]}</span>
@@ -53,10 +52,10 @@ export default function ResourceCard({ resource, isWatchlisted, onDelete, onEdit
 
         <div className="card-actions">
           <button className="btn-edit" onClick={() => onEdit(resource)}>
-            ✏️ Edit
+             Edit
           </button>
           <button className="btn-delete" onClick={() => onDelete(id)}>
-            🗑 Delete
+            Delete
           </button>
         </div>
       </div>

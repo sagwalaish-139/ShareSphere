@@ -35,7 +35,7 @@ body {
   min-height: 100vh;
 }
 
-/* navbar */
+
 
 .navbar {
   background: #fff;
@@ -115,7 +115,7 @@ body {
   font-weight: 700;
 }
 
-/* main */
+
 
 .main-content {
   max-width: 1200px;
@@ -165,7 +165,7 @@ body {
   transform: translateY(0);
 }
 
-/* search + filters */
+
 
 .filters-bar {
   display: flex;
@@ -209,7 +209,6 @@ body {
   border-color: var(--indigo);
 }
 
-/* cards grid */
 
 .resource-grid {
   display: grid;
@@ -217,7 +216,7 @@ body {
   gap: 1.25rem;
 }
 
-/* single card */
+
 
 .resource-card {
   background: var(--card);
@@ -283,7 +282,6 @@ body {
   filter: drop-shadow(0 0 3px gold);
 }
 
-/* badges */
 
 .card-badges {
   display: flex;
@@ -315,7 +313,7 @@ body {
   flex: 1;
 }
 
-/* card footer */
+
 
 .card-footer {
   display: flex;
@@ -539,7 +537,6 @@ body {
   line-height: 1.6;
 }
 
-/* mobile */
 
 @media (max-width: 640px) {
   .navbar {
